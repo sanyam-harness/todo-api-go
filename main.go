@@ -8,17 +8,16 @@ import (
 )
 
 func main() {
-	// Create a new router
+	service := NewTodoService()
+	handler := NewHandler(service)
+
 	r := mux.NewRouter()
+	r.HandleFunc("/todos", handler.ListTodos).Methods("GET")
+	r.HandleFunc("/todos", handler.CreateTodo).Methods("POST")
+	r.HandleFunc("/todos/{id:[0-9]+}", handler.GetTodo).Methods("GET")
+	r.HandleFunc("/todos/{id:[0-9]+}", handler.UpdateTodo).Methods("PUT")
+	r.HandleFunc("/todos/{id:[0-9]+}", handler.DeleteTodo).Methods("DELETE")
 
-	// Define API routes and link them to handlers
-	r.HandleFunc("/todos", listTodos).Methods("GET")
-	r.HandleFunc("/todos", createTodo).Methods("POST")
-	r.HandleFunc("/todos/{id:[0-9]+}", getTodo).Methods("GET")
-	r.HandleFunc("/todos/{id:[0-9]+}", updateTodo).Methods("PUT")
-	r.HandleFunc("/todos/{id:[0-9]+}", deleteTodo).Methods("DELETE")
-
-	// Start the HTTP server
 	log.Println("Server running at http://localhost:8080")
 	log.Fatal(http.ListenAndServe(":8080", r))
 }
