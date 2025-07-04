@@ -40,36 +40,30 @@ You can test the TODO API using `curl` commands from your terminal.
 
 ### 1. Create a TODO
 
-```bash
 curl -X POST http://localhost:8080/todos \
 -H "Content-Type: application/json" \
 -d '{"title": "Learn Go"}'
 
 ### 2. List all TODOs
 
-'''bash
 curl http://localhost:8080/todos
 
 ### 3. Get a TODO by ID
 
-'''bash
 curl http://localhost:8080/todos/1
 
 ### 4. Update a TODO 
 
-'''bash
 curl -X PUT http://localhost:8080/todos/1 \
 -H "Content-Type: application/json" \
 -d '{"title": "Learn Go in depth", "completed": true}'
 
 ### 5. Soft Delete a TODO
 
-'''bash
 curl -X DELETE http://localhost:8080/todos/1
 
 ### 6. Confirm Deletion (Should Show Empty or Not Found)
 
-'''bash
 curl http://localhost:8080/todos/1
 
 
