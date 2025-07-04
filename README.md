@@ -17,10 +17,10 @@ It manages TODO items in memory (no database), and follows a clean layered archi
 
 ## 🧱 Project Structure
 
-main.go → Entry point and route setup
-handler.go → Handles HTTP requests
-service.go → Business logic (CRUD operations)
-todo.go → Data model (Todo struct)
+- main.go → Entry point and route setup
+- handler.go → Handles HTTP requests
+- service.go → Business logic (CRUD operations)
+- todo.go → Data model (Todo struct)
 
 
 ---
